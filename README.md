@@ -14,20 +14,24 @@ PageIndex builds semantic tree structures from documents without embeddings or v
 
 ## Installation
 
+Clone the repository and install in editable mode:
+
 ```bash
-pip install pageindex
+git clone https://github.com/NP-compete/pageindex.git
+cd pageindex
+pip install -e .
 ```
 
 With document conversion support:
 
 ```bash
-pip install pageindex[docling]
+pip install -e ".[docling]"
 ```
 
 For development:
 
 ```bash
-pip install pageindex[dev]
+pip install -e ".[dev]"
 ```
 
 ## Quick Start
